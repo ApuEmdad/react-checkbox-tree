@@ -6,49 +6,6 @@ import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import TreeItem from "@mui/lab/TreeItem";
 import { Checkbox, FormControlLabel } from "@mui/material";
 
-/* object data starts */
-/* const data = {
-  id: "0",
-  name: "Parent",
-  children: [
-    {
-      id: "1",
-      name: "Child - 1",
-    },
-    {
-      id: "3",
-      name: "Child - 3",
-      children: [
-        {
-          id: "4",
-          name: "Child - 4",
-          children: [
-            {
-              id: "7",
-              name: "Child - 7",
-            },
-            {
-              id: "8",
-              name: "Child - 8",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      id: "5",
-      name: "Child - 5",
-      children: [
-        {
-          id: "6",
-          name: "Child - 6",
-        },
-      ],
-    },
-  ],
-}; */
-/* object data ends */
-
 /* array data starts */
 const data = [
   {
@@ -173,15 +130,25 @@ const RecursiveTreeView = () => {
 
   function getOnChange(checked, nodes) {
     const allNode = getChildById(data, nodes.id);
-    console.log("allnode", allNode);
+
     let array = checked
       ? [...selected, ...allNode]
       : selected.filter((value) => !allNode.includes(value));
 
+    // If the current node has children, update the selected state for all child nodes as well
+    if (Array.isArray(nodes.children)) {
+      nodes.children.forEach((child) => {
+        const childNodeIds = getChildById(data, child.id);
+        array = checked
+          ? [...array, ...childNodeIds]
+          : array.filter((value) => !childNodeIds.includes(value));
+      });
+    }
+
     setSelected(array);
   }
 
-  console.log(selected);
+  console.log("selected:", selected);
 
   const RenderTreeWithCheckboxes = (nodes) => {
     return (
