@@ -1,0 +1,4 @@
+{
+  "editor.multiCursorModifier": "alt",
+  "terminal.integrated.altClickMovesCursor": true
+}
