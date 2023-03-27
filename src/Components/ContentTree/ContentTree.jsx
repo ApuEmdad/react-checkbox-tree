@@ -13,7 +13,6 @@ const ContentTree = ({ data, selected, setSelected, setParent }) => {
       if (Array.isArray(nodes.children)) {
         nodes.children.forEach((node) => {
           array = [...array, ...getAllChild(node)];
-          array = array.filter((v, i) => array.indexOf(v) === i);
         });
       }
       return array;
@@ -54,6 +53,7 @@ const ContentTree = ({ data, selected, setSelected, setParent }) => {
           : array.filter((value) => !childNodeIds.includes(value));
       });
     }
+    array = array.filter((v, i) => array.indexOf(v) === i);
 
     setSelected(array);
   }
@@ -64,7 +64,7 @@ const ContentTree = ({ data, selected, setSelected, setParent }) => {
         className="tree-item"
         key={nodes.id}
         nodeId={nodes.id.toString()}
-        onClick={() => setParent(data)}
+        onClick={() => setParent(nodes)}
         label={
           <>
             <FormControlLabel

@@ -25,30 +25,7 @@ const ContentTrees = ({ selected, setSelected, setParent }) => {
       </Box>
 
       <Box>
-        <Box>
-          <TreeView
-            className="TreeView"
-            defaultExpandIcon={
-              <ChevronRightIcon sx={{ fontSize: "1.5rem !important" }} />
-            }
-            defaultCollapseIcon={
-              <ExpandMoreIcon sx={{ fontSize: "1.5rem !important" }} />
-            }
-          >
-            {data.map((data) => (
-              <TestContentTree
-                data={data}
-                key={data.id}
-                selected={selected}
-                setSelected={setSelected}
-                setParent={setParent}
-              />
-            ))}
-          </TreeView>
-        </Box>
-      </Box>
-      {/* 
-      <Box>
+        {/*++++ Menu List starts ++++*/}
         <TreeView
           className="TreeView"
           defaultExpandIcon={
@@ -68,10 +45,34 @@ const ContentTrees = ({ selected, setSelected, setParent }) => {
             />
           ))}
         </TreeView>
+        {/*---- Menu List ends ----*/}
       </Box>
- */}
     </Box>
   );
 };
 
 export default ContentTrees;
+
+/* 
+<Box>
+  <TreeView
+    className="TreeView"
+    defaultExpandIcon={
+      <ChevronRightIcon sx={{ fontSize: "1.5rem !important" }} />
+    }
+    defaultCollapseIcon={
+      <ExpandMoreIcon sx={{ fontSize: "1.5rem !important" }} />
+    }
+  >
+    {data.map((data) => (
+      <TestContentTree
+        data={data}
+        key={data.id}
+        selected={selected}
+        setSelected={setSelected}
+        setParent={setParent}
+      />
+    ))}
+  </TreeView>
+</Box>
+*/

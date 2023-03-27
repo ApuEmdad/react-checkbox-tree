@@ -13,6 +13,7 @@ const Content = () => {
   return (
     <Box sx={{ p: 1 }}>
       <Grid container spacing={2}>
+        {/*++++ content left starts ++++*/}
         <Grid item xs={4}>
           <ContentTrees
             selected={selected}
@@ -20,10 +21,14 @@ const Content = () => {
             setParent={setParent}
           />
         </Grid>
+        {/*----content left ends ----*/}
+
+        {/*++++ content right starts ++++*/}
         <Grid item xs={8}>
-          <CreateMenu />
+          <CreateMenu parent={parent} />
         </Grid>
       </Grid>
+      {/*----content left ends ----*/}
     </Box>
   );
 };
