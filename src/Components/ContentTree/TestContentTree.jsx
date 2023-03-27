@@ -1,9 +1,16 @@
 import React, { useState } from "react";
+
+import TreeView from "@mui/lab/TreeView";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import TreeItem from "@mui/lab/TreeItem";
 import { Checkbox, FormControlLabel } from "@mui/material";
 import { Box } from "@mui/system";
+// import "./ContentTree.css";
 
 const ContentTree = ({ data, selected, setSelected, setParent }) => {
+  // const [selected, setSelected] = useState([]);
+
   function getChildById(node, id) {
     let array = [];
 
@@ -89,7 +96,21 @@ const ContentTree = ({ data, selected, setSelected, setParent }) => {
     );
   };
 
-  return RenderTreeWithCheckboxes(data);
+  return (
+    <Box>
+      <TreeView
+        className="TreeView"
+        defaultExpandIcon={
+          <ChevronRightIcon sx={{ fontSize: "1.5rem !important" }} />
+        }
+        defaultCollapseIcon={
+          <ExpandMoreIcon sx={{ fontSize: "1.5rem !important" }} />
+        }
+      >
+        {RenderTreeWithCheckboxes(data)}
+      </TreeView>
+    </Box>
+  );
 };
 
 export default ContentTree;
